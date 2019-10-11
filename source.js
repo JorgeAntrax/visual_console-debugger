@@ -14,6 +14,27 @@ const $watchAll = (el, ev, callback) => {
 };
 
 
+if ($select('[type="css"]')) {
+    const $css = document.querySelectorAll('[type="css"]');
+    $css.forEach($cs => {
+        const $renderCSS = document.importNode($cs.content, true);
+        document.head.appendChild($renderCSS);
+        // console.log($cs.content);
+        $cs.remove();
+    });
+
+}
+if ($select('[type="js"]')) {
+    const $js = document.querySelectorAll('[type="js"]');
+    $js.forEach($j => {
+        const $renderjs = document.importNode($j.content, true);
+        document.body.appendChild($renderjs);
+        // console.log($j.content);
+        $j.remove();
+    });
+}
+
+
 function __debug__($response) {
   setTimeout(() => {
     if($response != undefined) {
